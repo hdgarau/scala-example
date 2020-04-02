@@ -1,4 +1,4 @@
-name := "HelloDocker-Sbt"
+name := "scala-hello-world-sample-app"
 
 version := "1.0"
 

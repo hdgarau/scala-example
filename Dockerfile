@@ -1,17 +1,17 @@
-FROM openjdk:8
+# first stage
 
-ENV SBT_VERSION 0.13.15
+FROM hseeberger/scala-sbt:11.0.6_1.3.9_2.13.1 AS build
 
-RUN \
-  curl -L -o sbt-$SBT_VERSION.deb http://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb && \
-  dpkg -i sbt-$SBT_VERSION.deb && \
-  rm sbt-$SBT_VERSION.deb && \
-  apt-get update && \
-  apt-get install sbt && \
-  sbt sbtVersion
+COPY ./ ./
 
-WORKDIR /HelloWorld
+RUN sbt compile clean package
 
-COPY . /HelloWorld
+# second stage
 
-CMD sbt run
+FROM openjdk:8-jre-alpine3.9 
+
+COPY --from=build /root/target/scala-2.12/*.jar /scala-hello-world-sample-app.jar
+COPY --from=build /root/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.2.jar /scala-library-2.12.2.jar
+RUN ls
+
+CMD ["java", "-cp", "scala-hello-world-sample-app.jar:scala-library-2.12.2.jar", "HelloWorld"]

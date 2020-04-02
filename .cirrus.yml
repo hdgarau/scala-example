@@ -1,4 +1,0 @@
-container:
-  image: mozilla/sbt:latest
-task:
-  tests_script: sbt test
