@@ -6,9 +6,6 @@
 
 This project uses `Scala` to build an application which will eventually become a distributable Docker image.
 
-In the root of this repository you'll find a file named `codefresh.yml`, this is our [build descriptor](https://codefresh.io/docs/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and it describes the different steps that comprise our process.
-Let's quickly review the contents of this file:
-
 ## Build in Codefresh
 
 [Example single stage pipeline](codefresh-single-stage.yml)
