@@ -2,7 +2,4 @@ FROM hseeberger/scala-sbt:11.0.6_1.3.9_2.13.1
 
 COPY ./ ./  
 
-RUN sbt compile clean package
-RUN ls -la
-
 CMD ["java", "-cp", "target/scala-2.12/*.jar:.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.2.jar", "HelloWorld"]
