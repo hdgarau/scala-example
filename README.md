@@ -11,7 +11,9 @@ Let's quickly review the contents of this file:
 
 ## Build in Codefresh
 
-[Example pipeline](codefresh.yml)
+[Example single stage pipeline](codefresh-single-stage.yml)
+[Example multi-stage pipeline](codefresh-multi-stage.yml)
+
 
 See the [documentation](https://codefresh.io/docs/docs/learn-by-example/scala/scala-hello-world/) for more details.
 
