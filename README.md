@@ -8,8 +8,8 @@ This project uses `Scala` to build an application which will eventually become a
 
 ## Build in Codefresh
 
-[Example single stage pipeline](codefresh-single-stage.yml)
-[Example multi-stage pipeline](codefresh-multi-stage.yml)
+- [Example single stage pipeline](codefresh-single-stage.yml)
+- [Example multi-stage pipeline](codefresh-multi-stage.yml)
 
 
 See the [documentation](https://codefresh.io/docs/docs/learn-by-example/scala/scala-hello-world/) for more details.
