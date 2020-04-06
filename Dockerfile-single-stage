@@ -1,6 +1,6 @@
 FROM hseeberger/scala-sbt:11.0.6_1.3.9_2.13.1
 
-COPY ./ ./  
-COPY /codefresh/volume/ivy_cache/cache/org.scala-lang/scala-library/jars/scala-library-2.12.2.jar scala-library-2.12.2.jar
+COPY . . 
+COPY scala-library-2.12.2.jar .
 
 CMD ["java", "-cp", "target/scala-2.12/*.jar:scala-library-2.12.2.jar", "HelloWorld"]
