@@ -31,3 +31,4 @@ To run the docker image, run following command:
 ```
 $ docker run -it codefresh-contrib/scala-hello-world-sample-app:1.0
 ```
+Original source: https://github.com/yzhong52/HelloDockerScalaSbt
