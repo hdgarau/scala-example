@@ -1,0 +1,34 @@
+version: "1.0"
+
+stages:
+  - clone
+  - package
+  - build
+
+steps:
+  clone:
+    title: Cloning repository...
+    type: git-clone
+    stage: clone
+    arguments:
+      repo:   codefresh-contrib/scala-hello-world-app  
+      revision: master
+  package:
+    title: Packaging application...
+    type: freestyle
+    stage: package
+    working_directory: ./scala-hello-world-app
+    arguments:
+      image: hseeberger/scala-sbt:11.0.6_1.3.9_2.13.1
+      commands:
+        - sbt -Dsbt.ivy.home=/codefresh/volume/ivy_cache clean compile package 
+        - cp /codefresh/volume/ivy_cache/cache/org.scala-lang/scala-library/jars/scala-library-2.12.2.jar . 
+  build_image:
+    title: Building Docker image...
+    type: build
+    working_directory: ${{clone}}
+    stage: build
+    arguments:
+      image_name: codefresh/scala-sample-app
+      tag: 1.0.0
+      dockerfile: Dockerfile-single-stage
