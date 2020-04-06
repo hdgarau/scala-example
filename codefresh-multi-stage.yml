@@ -1,0 +1,23 @@
+version: "1.0"
+
+stages:
+  - clone
+  - build
+
+steps:
+  clone:
+    title: Cloning repository...
+    type: git-clone
+    stage: clone
+    arguments:
+      repo:   codefresh-contrib/scala-hello-world-app  
+      revision: master
+  build_image:
+    title: Building Docker image...
+    type: build
+    working_directory: ${{clone}}
+    stage: build
+    arguments:
+      image_name: codefresh/scala-hello-world-app
+      tag: 1.0.0
+      dockerfile: Dockerfile-multi-stage
